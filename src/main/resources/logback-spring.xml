@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!-- 	<springProfile name=" !local "> -->
+    <!-- 		<include -->
+    <!-- 			resource="org/springframework/boot/logging/logback/defaults.xml" /> -->
+
+    <!-- 		<appender name="CONSOLE" -->
+    <!-- 			class="ch.qos.logback.core.ConsoleAppender"> -->
+    <!-- 			<encoder class="net.logstash.logback.encoder.LogstashEncoder" /> -->
+    <!-- 		</appender> -->
+
+    <!-- 		<root level="WARN"> -->
+    <!-- 			<appender-ref ref="CONSOLE" /> -->
+    <!-- 		</root> -->
+    <!-- 	</springProfile> -->
+
+    <springProfile name="kubernetes">
+        <include
+                resource="org/springframework/boot/logging/logback/defaults.xml" />
+
+        <appender name="CONSOLE"
+                  class="ch.qos.logback.core.ConsoleAppender">
+            <encoder class="net.logstash.logback.encoder.LogstashEncoder" />
+        </appender>
+
+        <root level="WARN">
+            <appender-ref ref="CONSOLE" />
+        </root>
+    </springProfile>
+
+    <springProfile name="local | carl |dev | test">
+        <include
+                resource="org/springframework/boot/logging/logback/defaults.xml" />
+        <include
+                resource="org/springframework/boot/logging/logback/console-appender.xml" />
+
+        <root level="WARN">
+            <appender-ref ref="CONSOLE" />
+        </root>
+    </springProfile>
+
+</configuration>

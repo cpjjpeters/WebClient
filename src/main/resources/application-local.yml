@@ -1,0 +1,14 @@
+app:
+  environment: local
+  title: TRYOUT demo
+server:
+  port: 8585
+  servlet:
+    contextPath: /tryout
+logging:
+  level:
+    reactor.netty: DEBUG
+    org.springframework.*: TRACE
+    org.hibernate: ERROR
+    root: TRACE
+
